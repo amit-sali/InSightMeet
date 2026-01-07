@@ -1,10 +1,29 @@
 import React, { useState } from 'react';
-import { Upload, FileText, CheckCircle2, Loader2, Download, FileVideo, Music } from 'lucide-react';
+import { Upload, FileText, CheckCircle2, Loader2, Download, FileVideo, Music, LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [file, setFile] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isGenerated, setIsGenerated] = useState(false);
+  const navigate = useNavigate();
+//Logout funtionality 917218
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/api/v1/logout', {
+        method: 'POST',
+        credentials: 'include'
+      });
+      
+      if (response.ok) {
+        alert('Logged out successfully!');
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+      navigate('/login'); // Redirect anyway
+    }
+  };
 
   // Simulate File Upload
   const handleFileUpload = (e) => {
@@ -29,11 +48,20 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gray-50 flex">
       {/* Main Content Area */}
       <div className="flex-1 p-4 md:p-10">
-        <header className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tighter text-black">
-            My Lectures<span className="text-[#1DB954]">.</span>
-          </h1>
-          <p className="text-gray-500 text-sm">Upload audio or video to generate AI notes.</p>
+        <header className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tighter text-black">
+              My Lectures<span className="text-[#1DB954]">.</span>
+            </h1>
+            <p className="text-gray-500 text-sm">Upload audio or video to generate AI notes.</p>
+          </div>
+          <button 
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-full transition-colors"
+          >
+            <LogOut size={16} />
+            Logout
+          </button>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
