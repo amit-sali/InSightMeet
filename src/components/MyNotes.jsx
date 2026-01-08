@@ -67,7 +67,7 @@ const MyNotes = () => {
         </div>
 
         {/* Notes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div >
           <Card notes={notes} />
 
           {/* Empty State / Add New Card */}
