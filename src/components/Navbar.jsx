@@ -66,12 +66,21 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col gap-5">
-            <a
-              href="#"
+
+            <Link
+              to="/"
               className="text-lg font-medium hover:text-[#1DB954] transition-colors"
             >
               Home
-            </a>
+            </Link>
+
+            <Link
+              to="/dashboard"
+              className="text-lg font-medium hover:text-[#1DB954] transition-colors"
+            >
+              Dashboard
+            </Link>
+
             <Link
               to="/mynotes"
               className="text-lg font-medium hover:text-[#1DB954] transition-colors"
