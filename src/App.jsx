@@ -11,6 +11,7 @@ import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
 import MyNotes from "./components/MyNotes";
 import NotesGenerator from "./pages/NotesGenerator";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -22,9 +23,12 @@ function App() {
         <Route path="/" element={<Hero />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/mynotes" element={<MyNotes/>}/>
-        <Route path="/notes-generator" element={<NotesGenerator/>}/>
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+        <Route path="/mynotes" element={<ProtectedRoute><MyNotes/></ProtectedRoute>}/>
+        <Route path="/notes-generator" element={<ProtectedRoute><NotesGenerator/></ProtectedRoute>}/>
+
+
+
         {/* Redirect any unknown routes to home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
