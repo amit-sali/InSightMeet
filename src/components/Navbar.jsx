@@ -80,6 +80,12 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
+            <Link
+              to="/notes-generator"
+              className="text-lg font-medium hover:text-[#1DB954] transition-colors"
+            >
+              Generate Notes
+            </Link>
 
             <Link
               to="/mynotes"

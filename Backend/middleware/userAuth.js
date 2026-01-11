@@ -1,7 +1,7 @@
 import HandleError from "../utils/handleError.js";
 import handleAsyncError from "./handleAsyncError.js";
-import  jwt  from "jsonwebtoken";
-import User from '../models/userModels.js'
+import jwt from "jsonwebtoken";
+import User from '../models/userModel.js';
 
 export const verifyUserAuth = handleAsyncError(
     async(req,res,next)=>{
